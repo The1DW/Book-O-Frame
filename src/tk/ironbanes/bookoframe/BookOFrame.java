@@ -8,6 +8,7 @@ public class BookOFrame extends JavaPlugin {
     public void onEnable(){
         getServer().getPluginManager().registerEvents(new EventHandler(), this);
         //getServer().getPluginManager().registerEvents(new EventHandler().onPlayerEntityInteract();, this);
+        this.getCommand("bookoframe").setExecutor(new CommandBOF());
 
 
     }
