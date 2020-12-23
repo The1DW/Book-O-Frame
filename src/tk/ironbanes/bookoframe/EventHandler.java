@@ -43,8 +43,6 @@ public class EventHandler implements Listener {
             if (ItemInFrame.getType() == Material.WRITTEN_BOOK){
                 p.getInventory().addItem(ItemInFrame);
                 p.updateInventory();
-
-
             }
         }
 
