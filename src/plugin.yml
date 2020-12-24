@@ -7,3 +7,5 @@ commands:
   bookoframe:
     description: Creates a item frame to place down to allow the copying of a book
     usage: /<command>
+
+

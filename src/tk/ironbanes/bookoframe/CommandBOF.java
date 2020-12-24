@@ -29,6 +29,7 @@ public class CommandBOF implements CommandExecutor {
                 itemframe.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
                 p.getInventory().addItem(itemframe);
                 p.updateInventory();
+                Lore.clear();
             }
         }
         return false;
