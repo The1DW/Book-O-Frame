@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class BookOFrame extends JavaPlugin {
     private Connection connection;
-    public String host, database, username, password, table;
+    public String host, database, username, password, table,item_name,item_lore;
     public int port;
 
 
@@ -19,10 +19,12 @@ public class BookOFrame extends JavaPlugin {
     @Override
     public void onEnable(){
         getServer().getPluginManager().registerEvents(new EventHandler(), this);
-        //getServer().getPluginManager().registerEvents(new EventHandler().onPlayerEntityInteract();, this);
         this.getCommand("bookoframe").setExecutor(new CommandBOF());
         loadconfig();
         mysqlSetup();
+        item_name = this.getConfig().getString("item-name");
+        item_lore = this.getConfig().getString("item-lore");
+
 
 
 
@@ -46,9 +48,11 @@ public class BookOFrame extends JavaPlugin {
                     return;
                 }
                 Class.forName("com.mysql.jdbc.Driver");
-                setConnection(DriverManager.getConnection("jbdc:mysql://"+this.host+":"+ this.port+"/"
+                setConnection(DriverManager.getConnection("jdbc:mysql://"+this.host+":"+ this.port+"/"
                         + this.database, this.username,this.password));
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN +"===========================================================");
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"MYSQL CONNECTED");
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN +"===========================================================");
             }
 
         }catch(SQLException | ClassNotFoundException e){
@@ -57,8 +61,16 @@ public class BookOFrame extends JavaPlugin {
 
 
     }
+    public synchronized void closeConnection(){
+        try{
+            connection.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onDisable() {
+        closeConnection();
 
     }
 

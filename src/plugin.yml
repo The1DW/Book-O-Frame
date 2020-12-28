@@ -7,5 +7,14 @@ commands:
   bookoframe:
     description: Creates a item frame to place down to allow the copying of a book
     usage: /<command>
-
+permissions:
+  bookoframe.place:
+    description: lets the player place an item frame that can copy
+    default: op
+  bookoframe.command:
+    description: allows the player to run the /bookoframe command
+    default: op
+  bookoframe.use:
+    description: allows the player to copy the book from the itemframe
+    default: true
 
