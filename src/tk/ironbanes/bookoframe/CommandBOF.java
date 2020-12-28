@@ -1,5 +1,6 @@
 package tk.ironbanes.bookoframe;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -8,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -36,8 +38,11 @@ public class CommandBOF implements CommandExecutor {
                     Lore.add(ChatColor.BLUE + (plugin.item_lore));//value gotten from the config/main class
                     itemmeta.setLore(Lore);
                     itemmeta.setDisplayName(plugin.item_name);//value gotten form the config/main class
+                    itemmeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
                     itemframe.setItemMeta(itemmeta);//sets the itemmeta to the itemframe
                     itemframe.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
+
+
 
                     //gives/updates the players inventory with the item frame
                     p.getInventory().addItem(itemframe);

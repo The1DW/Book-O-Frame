@@ -10,10 +10,10 @@ commands:
 permissions:
   bookoframe.place:
     description: lets the player place an item frame that can copy
-    default: op
+    default: false
   bookoframe.command:
     description: allows the player to run the /bookoframe command
-    default: op
+    default: false
   bookoframe.use:
     description: allows the player to copy the book from the itemframe
     default: true
