@@ -125,6 +125,9 @@ public class EventHandler implements Listener
     public void addBlockToSQL(String blockname,World world, double x,double y,double z)
     {
         try{
+            if(plugin.getConnection().isClosed()){
+                plugin.mysqlSetup();
+            }
             //creates a table if the database does not already have one
             Statement create = plugin.getConnection().createStatement();
             create.executeUpdate("CREATE TABLE IF NOT EXISTS "+plugin.table+"(`BLOCKNAME` VARCHAR(900),`WORLD` VARCHAR(30),`X` DOUBLE(30,5),`Y` DOUBLE(30,5), `Z` DOUBLE(30,5))");
@@ -152,6 +155,9 @@ public class EventHandler implements Listener
     public boolean checkSQLForBlock(String blockname)
     {
         try{
+            if(plugin.getConnection().isClosed()){
+                plugin.mysqlSetup();
+            }
             //makes a statement to check the database for the identification key
             PreparedStatement statement = plugin.getConnection()
                     .prepareStatement("SELECT * FROM "+plugin.table+" WHERE `BLOCKNAME`=?");

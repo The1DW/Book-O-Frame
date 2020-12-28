@@ -16,5 +16,5 @@ permissions:
     default: false
   bookoframe.use:
     description: allows the player to copy the book from the itemframe
-    default: true
+    default: false
 
